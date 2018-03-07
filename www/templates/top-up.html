@@ -1,0 +1,13 @@
+<ion-view view-title="我的易凡">
+    <ion-content>
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">充值金额：</span>
+                <input type="text" ng-model="$root.czprice" value="{{$root.czprice}}">
+            </label>
+            <label class="item">
+                <button class="button button-block button-positive" ng-click="chongzhi()" >去充值(支付宝/银联)</button>
+            </label>
+        </div>
+    </ion-content>
+</ion-view>

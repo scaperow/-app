@@ -1,0 +1,60 @@
+<ion-modal-view>
+    <ion-header-bar>
+        <h1 class="title">{{ panel ==1 ? '登录易凡网' : '注册易凡网账户'}}</h1>
+
+        <div class="buttons">
+            <button class="button button-clear" ng-click="closeLogin()">关闭</button>
+        </div>
+    </ion-header-bar>
+    <ion-content>
+        <div ng-if="panel==1">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">手机号</span>
+                    <input type="number" ng-model="loginData.username">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">密码</span>
+                    <input type="password" ng-model="loginData.password">
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" ng-click="login()">登录</button>
+                </label>
+            </div>
+            <button class="button button-clear button-positive" style="width:100%;" ng-click="changePanel(2)">注册新用户
+            </button>
+        </div>
+        <div ng-if="panel==2">
+            <div class="list">
+                <div class="item item-input-inset">
+                    <label class="login-item-input-wrapper">
+                        <input type="number" placeholder="手机号" ng-model="loginData.username">
+                    </label>
+                </div>
+                <div class="item item-input-inset">
+                    <label class="login-item-input-wrapper">
+                        <input type="number" placeholder="验证码" ng-model="loginData.vcode">
+                    </label>
+                    <button class="button button-small button-positive" ng-click="getValidationCode({{loginData.username}})">
+                        获取验证码
+                    </button>
+                </div>
+                <div class="item item-input-inset">
+                    <label class="login-item-input-wrapper">
+                        <input type="password" placeholder="设置密码" ng-model="loginData.password">
+                    </label>
+                </div>
+                <div class="item item-input-inset">
+                    <label class="login-item-input-wrapper">
+                        <input type="password" placeholder="重复密码" ng-model="loginData.repassword">
+                    </label>
+                </div>
+                <label class="item">
+                    <button class="button button-block button-positive" ng-click="$root.register()">注册</button>
+                </label>
+            </div>
+            <button class="button button-clear button-positive" style="width:100%;" ng-click="changePanel(1)">转到登录页
+            </button>
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,25 @@
+<ion-view view-title="使用余额支付">
+    <ion-content>
+            <div class="item ">
+                <label>我的余额</label>
+                <span class="item-note">
+                    <label class="assertive">{{balance}}</label><label>元</label>
+                </span>
+            </div>
+            <div class="item">
+                <label>需要支付</label>
+                  <span class="item-note">
+                    <label class="assertive">{{total}}</label><label>元</label>
+                </span>
+            </div>
+            <div class="item  item-input item-stacked-label">
+                <label>输入要使用的余额</label>
+                <input type="text" ng-model="$parent.value" placeholder="(元)"/>
+            </div>
+        </div>
+        <div class="padding">
+            <button ng-show="use > 0" class="button button-assertive button-block" ng-click="pay()">使用余额支付 {{use}} 元</button>
+            <button class="button button-stable button-block" ng-click="cancel()">不使用余额支付</button>
+        </div>
+    </ion-content>
+</ion-view>

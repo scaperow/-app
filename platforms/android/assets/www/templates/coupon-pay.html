@@ -1,0 +1,38 @@
+<ion-view view-title="使用优惠券支付">
+    <ion-content class="deep-content">
+        <p class="text-center padding-top balanced">
+            <label ng-if="coupons.length === 0">没有可用的优惠券</label>
+            <!--<label ng-if="coupons.length > 0 && total > 0">您需要支付 {{total}} 元</label>-->
+        </p>
+
+        <div class="card " ng-repeat="coupon in coupons">
+            <a ng-click="pay('{{coupon.code}}')" class="item">
+                <div class="energized">
+                    <label class="h2 energized ">
+                        {{coupon.price}}
+                    </label>
+                    <label>元优惠券</label>
+                </div>
+                <div>{{coupon.name}}</div>
+            </a>
+
+            <div class="item item-divider">
+                <!--<label class="balanced" ng-if="coupon.minprice > 0">-->
+                <!--满 {{coupon.minprice}} 元可使用-->
+                <!--</label>-->
+                <!--<label  ng-if="coupon.minprice === 0">-->
+                <!--可直接使用-->
+                <!--</label>-->
+                <label class="item-note">
+                    {{coupon.endtime}} 过期
+                </label>
+            </div>
+        </div>
+        <div class="padding">
+            <button class="button button-stable button-block button-assertive" ng-if="amount > 0"
+                    ng-click="ok()">使用优惠券抵用 {{amount}} 元
+            </button>
+            <button class="button button-stable button-block" ng-click="cancel()">不使用优惠券</button>
+        </div>
+    </ion-content>
+</ion-view>

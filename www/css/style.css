@@ -1,0 +1,312 @@
+/* Empty. Add your own CSS if you like */
+img.ads {
+    height: 6em;
+    text-align: center;
+}
+
+ion-slide.ads {
+    text-align: center;
+    height: 8em;
+    line-height: 8em;
+}
+
+img.fruits {
+    width: 100%;
+    height: 100%;
+
+}
+
+div.fruits {
+    width: 100%;
+    height: 100%;
+    margin: .5em;
+    display: inline-block;
+}
+
+div.commodity {
+    width: 8em;
+}
+
+div.commodity img {
+    width: 100%;
+    height: 100%;
+}
+
+span.commodity {
+    position: absolute;
+    width: 100%;
+    bottom: 0em;
+    background: rgba(0, 0, 0, .6);
+    height: 3em;
+    color: #fff;
+    padding: .2em;
+    font-size: .7em;
+    line-height: 3em;
+}
+
+.line {
+    width: 100%;
+
+}
+
+.col {
+    height: auto;
+}
+
+.col.left {
+    text-align: left;
+}
+
+.col.right {
+    text-align: right;
+}
+
+span.fruits {
+    position: absolute;
+    width: 100%;
+    bottom: 0em;
+    background: rgba(0, 0, 0, .6);
+    height: 3em;
+    color: #fff;
+    padding: .2em;
+    font-size: .7em;
+    line-height: 3em;
+}
+
+.commodity .price {
+    right: .2em;
+    position: absolute;
+    color: #999999;
+    font-size: .5em;
+}
+
+.commodity .name {
+    margin-left: .5em;
+    font-size: .5em;
+    color: #3c3c3c;
+}
+
+.commodity .card {
+    position: relative;
+    margin: 0 !important;
+}
+
+.price b {
+    color: #ff0000;
+}
+
+.line {
+    font-size: .8em;
+    text-align: center;
+    border-bottom: .1em #f0f0f0 solid;
+    height: 2em;
+    line-height: 2em;
+}
+
+.line .title {
+
+}
+
+.car {
+}
+
+.car .item {
+    padding: 5px;
+}
+
+.car .div {
+    position: relative;
+    padding: 0px;
+    height: 80px;
+}
+
+.car .control {
+    float: left;
+    height: 80px;
+    line-height: 80px;
+    margin-left: 5px
+}
+
+.car .cover {
+    float: left;
+    height: 80px;
+    line-height: 80px;
+    margin-left: 5px
+}
+
+.car .cover img {
+    max-width: 80px;
+    max-height: 80px;
+}
+
+.car .content {
+    height: 80px;
+    /*padding-left: 5px*/
+}
+
+.car .content .control {
+    float: left;
+    height: 80px;
+    padding-left: 5px
+}
+
+.car .total {
+    float: left;
+    height: 80px;
+    padding-left: 5px;
+    line-height: 80px;
+    right: 5px;
+    position: absolute;
+}
+
+.categoryItem {
+    border-color: #ddd;
+    background-color: #eee;
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin-bottom: -1px;
+    padding: 16px;
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: -1px;
+    font-size: 16px;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.login-item-input-wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0;
+    -moz-box-flex: 1;
+    -moz-flex: 1 0;
+    -ms-flex: 1 0;
+    flex: 1 0;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    align-items: center;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.order-detail-item {
+    background-color: #fff;
+    color: #444;
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: -1px;
+    padding: 16px;
+    font-size: 16px;
+}
+
+/** For the task list header columns and tasks **/
+.flex-container {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    border: none;
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.wrap {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 320px) {
+
+    .flex-container.wrap > div {
+        width: 50%;
+        max-width: 50%;
+        text-overflow: '';
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+}
+
+@media (min-width: 321px) {
+    .flex-container.wrap > div {
+        width: 33%;
+        max-width: 33%;
+        text-overflow: '';
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 480px) {
+    .flex-container.wrap > div {
+        width: 25%;
+        max-width: 25%;
+        text-overflow: '';
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 640px) {
+    .flex-container.wrap > div {
+        width: 20%;
+        max-width: 20%;
+        text-overflow: '';
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+@media (min-width: 960px) {
+    .flex-container.wrap > div {
+        width: 15%;
+        max-width: 15%;
+        text-overflow: '';
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+.column {
+    text-overflow: '';
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 87%;
+    float: left;
+    padding: 2px 5px;
+}
+
+#mine-header {
+    padding: 25px 110px;
+    background-color: transparent;
+}
+
+#mine-list {
+
+}
+
+#mine-content {
+    background: url(../img/back.jpg);
+    background-size: cover;
+
+}
+
+.deep-content{
+    background: #e9e9e9;
+}

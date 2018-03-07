@@ -1,0 +1,31 @@
+<ion-view view-title="易凡网">
+    <!--<ion-nav-buttons side="secondary">-->
+        <!--<button class="button button-icon icon ion-ios7-search" ng-click="search()"></button>-->
+    <!--</ion-nav-buttons>-->
+    <ion-content scroll="false">
+        <ion-scroll zooming="false" direction="y" style="width:35%; height: 100%; float:left; padding-right:10px;">
+            <div class="list">
+                <div ng-repeat="category in categories" style="border-right:1px solid #ddd">
+                    <a class="item {{( category.name == choose)?'calm-bg light':''}}"
+                       style="font-size: 11px; padding: 8px;text-align: center"
+                       ng-click="showProduct({{category.code}},'{{category.name}}')">
+                        {{category.name}}
+                    </a>
+                </div>
+            </div>
+        </ion-scroll>
+        <ion-scroll zooming="false"  direction="y" style="width:65%;height: 100%;float:left" delegate-handle="categoriesProductScroll"  lazy-scroll>
+            <div class="list" style="border-left:1px solid #ddd">
+                <ion-item ng-repeat="item in products"
+                          class="item-thumbnail-left" ng-click="showDetail({{item.id}})" >
+                    <img image-lazy-src="{{item.img}}">
+                    <h2>{{item.name}}</h2>
+                    <p>{{item.standard}}</p>
+                    <p>{{item.price}}元/斤</p>
+
+                </ion-item>
+            </div>
+        </ion-scroll>
+
+    </ion-content>
+</ion-view>

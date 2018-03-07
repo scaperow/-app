@@ -1,0 +1,91 @@
+<ion-view view-title="购物车">
+    <!--<ion-nav-buttons side="secondary">-->
+    <!--<button class="button button-icon icon ion-ios7-search" ng-click="search()"></button>-->
+    <!--</ion-nav-buttons>-->
+    <ion-content>
+        <div class="padding" ng-if="cars.length === 0">
+            <div class="text-center padding">
+                <label class="balanced">购物车空空如也</label>
+            </div>
+            <a class="button button-block button-assertive" href="#/tab/home">
+                立即挑选商品
+            </a>
+        </div>
+
+        <div class="list car">
+            <div class="item" href="#" ng-repeat="record in cars" ng-if="record.product">
+                <div class="control">
+                    <label class="checkbox" style="padding:0">
+                        <input type="checkbox" ng-model="record.checked" ng-disabled="record.product.status !== 1">
+                    </label>
+                </div>
+                <div class="cover">
+                    <a ng-click="showDetail(record.pid)">
+                        <img ng-src="{{ config.domain + '/upload/' + record.product.sku + '/' + record.product.cover}}">
+                    </a>
+                </div>
+                <div style=" padding:5px" class="item-body">
+                    <div style="float: none"></div>
+                    <div style="margin-left: 5px;">
+                        <label class="assertive" ng-hide="record.product.status === 1">已下架</label><label>{{
+                        record.product.name }}</label>
+                        <!--<span class="item-note">{{record.product.price}} 元 / 份</span>-->
+                        <label style="right:10px; position: absolute">{{ record.quantity * record.product.price |
+                            number:2}}元</label>
+                    </div>
+                    <div style="margin-left:-10px; margin-top:2px; margin-right:-5px">
+                        <button style="font-size:25px"
+                                class="button button-positive button-clear ion-ios7-minus-outline"
+                                ng-click="addQuantity({{record.pid}},{{record.psid}},-1)"></button>
+                        <!--<span>{{record.quantity}} 份</span>-->
+                        <span style="margin:0 -20px"
+                              class="button button-clear   "
+                                >{{record.quantity}} 份</span>
+                        <button style="font-size:25px"
+                                class="button button-positive button-clear ion-ios7-plus-outline"
+                                ng-click="addQuantity({{record.pid}},{{record.psid}},1)"></button>
+
+                    </div>
+                    <div style="right:0px;bottom:10px; position: absolute">
+                        <button style="font-size:25px"
+                                class="button button-assertive button-clear ion-ios7-close-outline"
+                                ng-click="removeCar(record.pid, record.psid)">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="height: 40px;">
+
+        </div>
+    </ion-content>
+    <ion-footer-bar class="bar-dark" style="padding: 0" ng-if="cars.length > 0">
+        <div class="row" style="padding:0" ng-if="_.where(cars,{'checked':true}).length == 0">
+            <div class="col col-50" style="margin:0; padding:0;margin-left:5px; text-align:center;line-height: 48px">
+                请至少勾选一件商品
+            </div>
+            <div class="col col-50" style="width:100%; padding:0; margin:0; ">
+                <button class="button  button-assertive button-full" style="margin: 0; height: 48px"
+                        ng-click="checkAll()"
+                        style="margin-top: 0">
+                    全部选中
+                </button>
+            </div>
+        </div>
+
+        <div class="row" style="padding:0" ng-if="_.where(cars,{'checked':true}).length > 0">
+            <div class="col col-50" style="margin:0; padding:0;margin-left:5px; text-align:center;line-height: 48px">
+                共 {{total}} 元
+            </div>
+            <div class="col col-50" style="width:100%; padding:0; margin:0; ">
+                <button class="button  button-assertive button-full" style="margin: 0; height: 48px"
+                        ng-click="pay()"
+                        style="margin-top: 0">
+                    立即支付
+                </button>
+            </div>
+        </div>
+
+
+    </ion-footer-bar>
+</ion-view>

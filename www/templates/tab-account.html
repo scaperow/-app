@@ -1,0 +1,51 @@
+<ion-view view-title="我的易凡">
+    <!--<ion-nav-buttons side="secondary">-->
+        <!--<button class="button button-icon icon ion-ios7-search" ng-click="search()"></button>-->
+    <!--</ion-nav-buttons>-->
+    <ion-content id="mine-content">
+        <div  id="mine-header" class="item item-icon-left">
+            <i class="icon ion-person dark"  style="font-size: 75px; left:30px;"></i>
+            <h2 class="stable">{{user.mobile.substr(0, 7)+'****'}}</h2>
+            <label class="energized">积分 {{user.score}} </label>
+        </div>
+        <div class="list" id="mine-list">
+            <a class="item item-icon-right" href="#/tab/order" >
+                全部订单
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+            <a class="item item-icon-right" href="#/tab/favorite">
+                我的收藏
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+            <a class="item item-icon-right" href="#/tab/cost">
+                账户余额
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+            <a class="item item-icon-right" href="#/tab/coupons">
+                优惠券
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+            <a class="item item-icon-right" href="#/tab/address">
+                管理地址
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+            <!--<a class="item item-icon-right" href="#/tab/security">-->
+                <!--账户安全-->
+                <!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+            <!--</a>-->
+            <a class="item item-icon-right" href="#/tab/service">
+                易凡服务
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+            <a class="item item-icon-right" ng-click="buyWithPhone()">
+                电话订购
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+        </div>
+        <div class="padding" >
+            <button class="button button-block button-assertive" ng-click="logout()">
+                退出登录
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

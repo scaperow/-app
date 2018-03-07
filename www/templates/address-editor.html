@@ -1,0 +1,44 @@
+<ion-view view-title="{{$root.new ? '新增地址':'修改地址信息'}}">
+    <ion-content class="deep-content">
+        <div class="list">
+            <dev class="item item-input item-select">
+                <label class="input-label" style="width:30%;">
+                    省市区
+                </label>
+                <p>陕西省 西安市</p>
+                <select ng-model="$root.address.region" ng-change="changeRange()">
+                    <option value="">请选择</option>
+                    <option value="雁塔区">雁塔区</option>
+                    <option value="未央区">未央区</option>
+                    <option value="莲湖区">莲湖区</option>
+                    <option value="碑林区">碑林区</option>
+                    <option value="灞桥区">灞桥区</option>
+                </select>
+            </dev>
+            <dev class="item item-input item-select">
+                <label class="input-label">
+                    街道
+                </label>
+                <select ng-model="$root.address.street" ng-options="n for n in $root.streets"
+                         style="width:100%;">
+                    <option value="">请选择</option>
+                </select>
+            </dev>
+            <label class="item item-input ">
+                <input type="text" placeholder="详细地址" ng-model="$root.address.address">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="收货人" ng-model="$root.address.name">
+            </label>
+            <label class="item item-input">
+                <input type="text" placeholder="手机号码" ng-model="$root.address.mobile">
+            </label>
+        </div>
+        <div class="padding">
+            <button class="button button-block " ng-click="addressSubmit()">保存</button>
+            <button ng-if="!$root.new" class="button button-block " ng-click="setAsDefault($root.address.id)">设为默认地址</button>
+            <button ng-if="!$root.new" class="button button-block button-assertive" ng-click="deleteAddress($root.address.id)">删除
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

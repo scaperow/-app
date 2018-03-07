@@ -1,0 +1,26 @@
+<ion-view view-title="地址管理">
+    <ion-nav-buttons side="right">
+        <button class="button button-balanced" ng-click="newAddress()">
+            新增地址
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="deep-content">
+        <ion-list>
+            <a class="item item-text-wrap item-icon-right" ng-click="modifyAddress({{address.id}})" ng-repeat="address in user.addresses">
+                <!--<i ng-if="address.isdefault==1" class="icon ion-ios7-checkmark-empty balanced" ></i>-->
+                <label ng-if="address.isdefault == 1" class="assertive">(默认)</label>
+
+                <p>
+                    {{address.province}}-{{address.city}}-{{address.region}}
+                </p>
+
+                <p>{{address.street}} {{address.address}}</p>
+
+                <p>{{address.name}} {{address.mobile}} {{address.tel}}</p>
+                <!--<i class="icon ion-ios7-compose-outline balanced" ng-click="modifyAddress({{address.id}})"></i>-->
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+        </ion-list>
+    </ion-content>
+
+</ion-view>

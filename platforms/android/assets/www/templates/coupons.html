@@ -1,0 +1,41 @@
+<ion-view view-title="我的优惠券">
+    <ion-header-bar class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-clear {{choose == 'unuse' ? 'button-balanced' :''}} "
+               ng-click="switch('unuse')">未使用
+            </a>
+            <a class="button button-clear {{choose == 'used' ? 'button-balanced' :''}}"
+               ng-click="switch('used')">已使用
+            </a>
+            <a class="button button-clear {{choose == 'expired'?'button-balanced' :''}}"
+               ng-click="switch('expired')">已过期
+            </a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="padding" style="background: #e9e9e9">
+        <div class="padding-top text-center balanced" ng-show="coupons.length === 0">
+            <label>还没有数据～</label>
+        </div>
+        <div class="card " ng-repeat="coupon in coupons">
+            <div class="energized">
+                <label class="h2 energized ">
+                    {{coupon.price}}
+                </label>
+                <label>元优惠券</label>
+            </div>
+            <div>{{coupon.name}}</div>
+
+            <div class="item item-divider">
+                <label  ng-if="coupon.minprice > 0">
+                    满 {{coupon.minprice}} 元可使用
+                </label>
+                <label   ng-if="coupon.minprice === 0">
+                    可直接使用
+                </label>
+                <label class="item-note">
+                    {{coupon.endtime}} 过期
+                </label>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

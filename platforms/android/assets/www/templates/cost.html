@@ -1,0 +1,36 @@
+<ion-view view-title="我的易凡">
+    <ion-content>
+        <div class="list">
+            <a class="item item-icon-right" href="#/tab/cost">
+                您的账户余额：<span style="color:#e42012;">{{balances.balance}}</span> 元
+            </a>
+            <a class="item item-icon-right" href="#/tab/topup">
+                充值
+                <i class="icon ion-ios7-arrow-right"></i>
+            </a>
+        </div>
+        <div class="button-bar">
+            <a class="button button-clear {{aStyle}}" ng-click="typeClick(1)">全部</a>
+            <a class="button button-clear {{inStyle}}" ng-click="typeClick(2)">收入</a>
+            <a class="button button-clear {{outStyle}}" ng-click="typeClick(3)">支出</a>
+        </div>
+        <ion-list ng-if="tabCost==1">
+            <ion-item ng-repeat="item in balances.items" class="item-divider">
+                <p>{{item.log}} {{item.created}}</p>
+                <p>{{item.stype}} {{item.amount}}元</p>
+            </ion-item>
+        </ion-list>
+        <ion-list ng-if="tabCost==2">
+            <ion-item ng-repeat="item in inPay" class="item-divider">
+                <p>{{item.log}} {{item.created}}</p>
+                <p>{{item.stype}} {{item.amount}}元</p>
+            </ion-item>
+        </ion-list>
+        <ion-list ng-if="tabCost==3">
+            <ion-item ng-repeat="item in outPay" class="item-divider">
+                <p>{{item.log}} {{item.created}}</p>
+                <p>{{item.stype}} {{item.amount}}元</p>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

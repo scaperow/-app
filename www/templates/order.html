@@ -1,0 +1,48 @@
+<ion-view view-title="全部订单">
+    <ion-header-bar class="bar bar-subheader">
+        <div class="button-bar">
+            <a class="button button-clear {{choose == 'all' ? 'button-balanced' :''}} "
+               ng-click="switch('all')">全部订单
+                  <span class="badge badge-energized" ng-show="choose === 'all' &&  orders.length > 0"
+                        style="left:-9px; top:-10px; font-size: 10px; line-height: 10px; padding: 3px 5px;">
+                      {{total}}
+                  </span>
+            </a>
+            <a class="button button-clear {{choose == 'unpay' ? 'button-balanced' :''}}" ng-click="switch('unpay')">待付款
+                <span class="badge badge-energized" ng-show="choose === 'unpay' &&  orders.length > 0"
+                      style="left:-9px; top:-10px; font-size: 10px; line-height: 10px; padding: 3px 5px;">
+                    {{total}}
+                </span>
+            </a>
+            <a class="button button-clear {{choose == 'unway'?'button-balanced' :''}}"
+               ng-click="switch('unway')">待收货
+                  <span class="badge badge-energized" ng-show="choose === 'unway' &&  orders.length > 0"
+                        style="left:-9px; top:-10px; font-size: 10px; line-height: 10px; padding: 3px 5px;">
+                      {{total}}
+                  </span>
+            </a>
+        </div>
+    </ion-header-bar>
+    <ion-content class="padding" style="background: #e9e9e9">
+        <div class="padding-top text-center balanced" ng-show="orders.length === 0">
+            <label>还没有数据</label>
+        </div>
+        <div class="card " ng-repeat="item in orders">
+            <a ng-click="showDetail({{item.id}},'{{item.status}}')">
+                <div class="item  item-divider {{item.itemcolor}} item-icon-right">
+                    下单时间：{{item.ordered}}
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </div>
+                <div class="item item-text-wrap">
+                    <p>订单号：{{item.ordernum}}</p>
+
+                    <p>订单状态：<span class="{{item.scolor}}">{{item.status}}</span></p>
+
+                    <p>订单金额：￥{{item.currentprice}}元</p>
+                </div>
+            </a>
+        </div>
+        <button ng-hide="orders.length === 0" class="button button-block button-stable" ng-click="load()">加载更多
+        </button>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,56 @@
+<ion-view view-title="易凡网">
+    <ion-nav-buttons side="right">
+        <button class="button button-icon icon ion-ios7-search" ng-click="search()"></button>
+    </ion-nav-buttons>
+    <ion-header-bar class="bar bar-subheader">
+        <!--<div class="button-bar">-->
+        <!--<a class="button button-clear {{vstyle}}" ng-click="titleClick(1)">蔬菜</a>-->
+        <!--<a class="button button-clear {{fstyle}}" ng-click="titleClick(2)">水果</a>-->
+        <!--</div>-->
+
+        <div class="button-bar">
+            <a class="button button-clear {{display == 'v'? 'button-balanced':''}}"
+               ng-di ng-click="titleClick('v')">蔬菜</a>
+            <a class="button button-clear {{display == 'f'? 'button-balanced':''}}"
+               ng-click="titleClick('f')">水果</a>
+        </div>
+    </ion-header-bar>
+    <ion-content on-scroll="scrolling()" on-scroll-complete="scrolled()" lazy-scroll>
+        <ion-slide-box>
+            <ion-slide ng-repeat="ad in ads">
+                <img style="width:100%" ng-src="{{ad.img}}">
+            </ion-slide>
+        </ion-slide-box>
+        <ion-list>
+
+            <ion-item ng-repeat="item in items"
+                      class="item-thumbnail-left" ng-click="showDetail({{item.id}})">
+
+                <img image-lazy-src="{{item.img}}">
+
+                <h2>{{item.name}}</h2>
+
+                <p>{{item.resume}}</p>
+
+                <p>{{item.standard}}</p>
+
+                <p>{{item.price}}元/斤</p>
+
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <!--<button class="button button-assertive ion-ios7-telephone button-light"-->
+            <!--style="right: 20px; bottom:60px; position: absolute; border-radius: 30px; opacity:0.8"-->
+            <!--ng-click="doPhone()">-->
+        <!--<label>电话订购</label>-->
+    <!--</button>-->
+
+
+    <!--<ion-footer-bar style="position: absolute; background: transparent; padding: 0">-->
+    <!--<button class="button button-assertive button-full button-light" style="margin: 0"-->
+    <!--ng-click="doPhone()">-->
+    <!--<i class="icon ion-ios7-telephone"></i>-->
+    <!--&nbsp;拨打 400 电话订购-->
+    <!--</button>-->
+    <!--</ion-footer-bar>-->
+</ion-view>

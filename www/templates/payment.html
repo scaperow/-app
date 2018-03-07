@@ -1,0 +1,182 @@
+<ion-view view-title="确认订单">
+    <ion-content style="background: #e9e9e9">
+        <div class="card">
+            <div class="item balanced item-icon-left item-button-right ">
+                <i class="icon ion-ios7-location-outline"></i>收货地址
+                <button class="button button-clear ion-ios7-arrow-down button-balanced" ng-if="!showAllAddress"
+                        ng-click="expandAddress()"></button>
+                <button class="button button-clear ion-ios7-arrow-up button-balanced" ng-if="showAllAddress"
+                        ng-click="collapseAddress()"></button>
+            </div>
+            <div ng-repeat="a in user.addresses" class="item item-radio"
+                 ng-if="!showAllAddress && a.id == order.addrid">
+
+                <input type="radio" name="address" value="{{a.id}}"
+                       ng-model="order.addrid" ng-change="collapseAddress()">
+
+                <p class="item-content">
+                    {{a.region}}-{{ a.street }}<br/>
+                    {{ a.street }} {{ a.address }}
+                    <br/>
+                    {{ a.name }} {{ a.mobile }}
+                </p>
+                <i class="radio-icon balanced ion-checkmark"></i>
+            </div>
+
+
+            <a ng-repeat="a in user.addresses" ng-if="showAllAddress" class="item item-button-right"
+               ng-click="setAddress(a.id)">
+                <p class="item-content">
+                    {{a.region}}-{{ a.street }}<br/>
+                    {{ a.address }}
+                    <br/>
+                    {{ a.name }} {{ a.mobile }}
+                </p>
+
+                <button class="button icon button-clear button-assertive ion-ios7-compose-outline"
+                        ng-click="modifyAddress(a.id);$event.stopPropagation()"></button>
+            </a>
+        </div>
+        <label class="item" ng-if="showAllAddress">
+            <button class="button button-full button-balanced" ng-click="newAddress();$event.stopPropagation()">增加地址
+            </button>
+        </label>
+
+        <div class="list card">
+
+            <div class="item item-icon-left balanced item-button-right">
+                <i class="icon ion-ios7-barcode-outline"></i>
+                支付方式
+            </div>
+            <a class="item item-icon-right" ng-click="useBalance()">
+                <p class="item-content">
+                    使用余额
+                    <br/>
+                    <span class="assertive" ng-if="balance === 0">我的余额 {{user.balance}}元</span>
+                    <span class="assertive" ng-if="balance > 0">已选择余额支付 {{balance}} 元</span>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </p>
+            </a>
+            <a   class="item item-icon-right" ng-click="useCoupon()">
+                <p class="item-content">
+                    使用优惠券
+                    <br/>
+                    <span class="assertive" ng-if="coupon > 0">已使用优惠券抵用 {{coupon}} 元</span>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </p>
+            </a>
+            <label ng-show="amount > 0" class="item  item-radio">
+                <input type="radio" name="pay" value="1" ng-model="order.payment">
+
+                <p class="item-content">
+                    支付宝
+                </p>
+                <i class="radio-icon  balanced ion-checkmark"></i>
+            </label>
+            <label ng-show="amount > 0" class="item item-radio">
+                <input type="radio" ng-click="chooseNoPay()" name="pay" value="0" ng-model="order.payment">
+
+                <p class="item-content">
+                    货到付款
+                </p>
+                <i class="radio-icon  balanced ion-checkmark"></i>
+            </label>
+            <!--<label class="item item-radio">-->
+            <!--<input type="radio" name="pay" value="3" ng-model="order.payment">-->
+
+            <!--<p class="item-content">-->
+            <!--网银支付-->
+            <!--</p>-->
+            <!--<i class="radio-icon balanced ion-checkmark"></i>-->
+            <!--</label>-->
+        </div>
+
+        <div class="list card">
+            <div class="item item-icon-left balanced item-button-right  ">
+                <i class="icon  ion-ios7-calculator-outline"></i>
+                费用信息
+            </div>
+            <div class="item ">
+                <p>
+                    商品总额
+                <span class="item-note">
+                    {{ order.price }} 元
+                </span>
+                </p>
+            </div>
+            <div class="item ">
+                <p>
+                    快递费用
+                <span class="item-note">
+                    {{ order.shippingprice }} 元
+                </span>
+                </p>
+            </div>
+            <div class="item ">
+                <p>
+                    活动优惠
+                    <span class="item-note assertive">
+                        {{ order.offPrice }} 元
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <div class="list card">
+            <div class="item item-icon-left balanced item-button-right  ">
+                <i class="icon ion-ios7-clock-outline"></i>
+                收货时间
+            </div>
+            <label class="item item-radio">
+                <input type="radio" name="delivery_day" ng-model="order.delivery_day" value="weekday">
+
+                <p class="item-content">
+                    仅工作日
+                </p>
+                <i class="radio-icon balanced ion-checkmark"></i>
+            </label>
+
+            <label class="item item-radio">
+                <input type="radio" name="delivery_day" ng-model="order.delivery_day" value="weekend">
+
+                <p class="item-content">
+                    仅双休日
+                </p>
+                <i class="radio-icon  balanced ion-checkmark"></i>
+            </label>
+
+            <label class="item item-radio">
+                <input type="radio" name="delivery_day" ng-model="order.delivery_day" value="">
+
+                <p class="item-content">
+                    工作日/假日/周末 均可
+                </p>
+                <i class="radio-icon balanced ion-checkmark"></i>
+            </label>
+
+
+            <label class="item item-input">
+                <textarea placeholder="留言信息" ng-model="order.msg"></textarea>
+            </label>
+        </div>
+        <div style="height: 40px;">
+
+        </div>
+    </ion-content>
+    <ion-footer-bar class=" bar-dark" style="padding: 0">
+        <div class="row" style="padding:0">
+            <div ng-if="amount" class="col "
+                 style="margin:0; padding:0;margin-left:5px; text-align:center;line-height: 48px">
+                <span ng-if="balance > 0 || coupon > 0">还</span><span>需支付 {{amount}} 元</span>
+            </div>
+
+            <div class="col" style="width:100%; padding:0; margin:0; ">
+                <button class="button  button-assertive button-full" style="margin: 0; height: 48px"
+                        ng-click="pay()"
+                        style="margin-top: 0">
+                    提交订单
+                </button>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

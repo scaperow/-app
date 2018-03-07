@@ -1,0 +1,61 @@
+<ion-view view-title="商品详情">
+    <ion-nav-buttons side="right">
+        <a  ng-click="share(product.psid)"  class="button button-clear icon-right ion-share"></a>
+        <a ng-click="doFavorite(product.psid)"ng-class="favorite?'button-energized':'button-light'"
+           class="button button-clear icon-right ion-ios7-star"></a>
+
+    </ion-nav-buttons>
+    <ion-content>
+        <ion-slide-box>
+            <ion-slide ng-repeat="cover in product.pics">
+                <img style="width:100%;" ng-src="{{cover.img}}">
+            </ion-slide>
+        </ion-slide-box>
+
+        <div class="item">
+            <p style="white-space: normal">{{product.resume}}</p>
+        </div>
+        <div class="item">
+            <div class="row ">
+                <div class="col col-50">
+                    <p> {{product.name}} </p>
+                </div>
+                <div class="col col-50">
+                    <h2><strong class="assertive">{{product.price}}</strong> 元/份</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-50 ">
+                    <p> {{product.standard}}</p>
+                </div>
+            </div>
+            <a class="button button-block button-assertive" ng-click="showDetail()">
+                查看图文详情
+            </a>
+        </div>
+        <a class="item item-icon-right" ng-click="showComments()">
+            <label>查看评论</label>
+
+            <i class="icon ion-chevron-right icon-accessory"></i>
+        </a>
+    </ion-content>
+
+    <ion-footer-bar class="bar-dark" style="padding: 0;">
+        <div class="row " style="padding: 0">
+            <div class="col" style="padding-top:5px;height: 48px;">
+                <button class="button button-clear ion-ios7-minus-outline" ng-click="addQuantity(-1)"></button>
+            </div>
+            <div class="col" style="padding-top:13px;height: 48px;">
+                <span ng-model="quantity">{{quantity}} 份</span>
+            </div>
+            <div class="col" style="padding-top:5px; height: 48px;">
+                <button class="button button-clear ion-ios7-plus-outline" ng-click="addQuantity(1)"></button>
+            </div>
+            <div class="col col-50" style="width:100%; padding:0; margin:0; ">
+                <button class="button button-full button-assertive" style="margin: 0; height: 48px" ng-click="buy()">
+                    放入购物车
+                </button>
+            </div>
+        </div>
+    </ion-footer-bar>
+</ion-view>

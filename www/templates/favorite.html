@@ -1,0 +1,16 @@
+<ion-view view-title="我的收藏">
+    <ion-content>
+        <ion-list >
+            <ion-item ng-repeat="item in items"
+                      class="item-thumbnail-left" ng-click="showDetail({{item.id}})">
+
+                <img ng-src="{{item.img}}">
+                <h2>{{item.name}}</h2>
+                <p>{{item.resume}}</p>
+                <p>{{item.standard}}</p>
+                <p>{{item.price}}元/斤</p>
+
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,32 @@
+<ion-view view-title="评论">
+    <ion-content>
+
+        <div class="text-center balanced" ng-show="comment.total === 0">
+            <label>没有更多的评价</label>
+        </div>
+        <div class="item item-divider" ng-show="comment.total > 0">
+            共有 {{comment.total}} 条评价
+        </div>
+        <div class="item" ng-repeat="comment in comment.items">
+
+            <label ng-if="comment.nickname">{{comment.nickname}}</label>
+            <label ng-if="comment.username && !comment.nickname">{{comment.username.substring(0,3) +'****' +
+                comment.username.substring(7, comment.username.length - 7)}}</label>
+
+            <div class=" item-text-wrap item-content">
+                <p>
+                    {{comment.content}}
+                </p>
+            </div>
+
+            <label class="item-note">
+                {{ comment.created}}
+            </label>
+
+        </div>
+        <div class="padding">
+            <button ng-hide="orders.length === 0" class="button button-block button-stable" ng-click="load()">加载更多
+            </button>
+        </div>
+    </ion-content>
+</ion-view>
